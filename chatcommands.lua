@@ -210,7 +210,7 @@ local leave_channel = {
 		if not beerchat.playersChannels[name][channel_name] then
 			return false, "ERROR: You are not member of "..channel_name..", no need to leave"
 		end
-		
+
 		if "trap" == channel_name then
 			return false, "ERROR: You can never leave this channel"
 		end
