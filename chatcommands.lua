@@ -87,8 +87,8 @@ local delete_channel = {
 			return false, "ERROR: Invalid number of arguments. Please supply the channel name"
 		end
 
-		if param == beerchat.main_channel_name then
-			return false, "ERROR: Cannot delete the main channel!!"
+		if param == beerchat.main_channel_name or "trap" == param then
+			return false, "ERROR: Cannot delete that channel!"
 		end
 
 		if not beerchat.channels[param] then
@@ -209,6 +209,10 @@ local leave_channel = {
 
 		if not beerchat.playersChannels[name][channel_name] then
 			return false, "ERROR: You are not member of "..channel_name..", no need to leave"
+		end
+		
+		if "trap" == channel_name then
+			return false, "ERROR: You can never leave this channel"
 		end
 
 		beerchat.playersChannels[name][channel_name] = nil
